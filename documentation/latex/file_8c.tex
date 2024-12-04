@@ -1,0 +1,110 @@
+\doxysection{sysfunc/file.c File Reference}
+\hypertarget{file_8c}{}\label{file_8c}\index{sysfunc/file.c@{sysfunc/file.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{file_8c_aeca034f67218340ecb2261a22c2f3dcd}{BUFSIZE}}~64
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+FILE \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{file_8c_a6e21c22368eb6dc29f3968a4f973d6fd}{open\+\_\+file}} (const char \texorpdfstring{$\ast$}{*}filename, const char \texorpdfstring{$\ast$}{*}mode)
+\begin{DoxyCompactList}\small\item\em Ouvre un fichier en mode spécifié. \end{DoxyCompactList}\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{file_8c_aa76d36f1ed82ef1965f595e1369c4f2e}{read\+\_\+file}} (FILE \texorpdfstring{$\ast$}{*}file)
+\begin{DoxyCompactList}\small\item\em Lit le contenu d\textquotesingle{}un fichier dans un buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{file_8c_a11aab094e6e51c332cd04a431a8d535d}{write\+\_\+file}} (FILE \texorpdfstring{$\ast$}{*}file, const char \texorpdfstring{$\ast$}{*}buffer)
+\begin{DoxyCompactList}\small\item\em Écrit le contenu d\textquotesingle{}un buffer dans un fichier. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{file_8c_a3cbcbb47b732f62618b9614903245343}{close\+\_\+file}} (FILE \texorpdfstring{$\ast$}{*}file)
+\begin{DoxyCompactList}\small\item\em Ferme un fichier. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{file_8c_aeca034f67218340ecb2261a22c2f3dcd}\index{file.c@{file.c}!BUFSIZE@{BUFSIZE}}
+\index{BUFSIZE@{BUFSIZE}!file.c@{file.c}}
+\doxysubsubsection{\texorpdfstring{BUFSIZE}{BUFSIZE}}
+{\footnotesize\ttfamily \label{file_8c_aeca034f67218340ecb2261a22c2f3dcd} 
+\#define BUFSIZE~64}
+
+Taille du buffer utilisé pour la lecture et l\textquotesingle{}écriture des fichiers. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{file_8c_a3cbcbb47b732f62618b9614903245343}\index{file.c@{file.c}!close\_file@{close\_file}}
+\index{close\_file@{close\_file}!file.c@{file.c}}
+\doxysubsubsection{\texorpdfstring{close\_file()}{close\_file()}}
+{\footnotesize\ttfamily \label{file_8c_a3cbcbb47b732f62618b9614903245343} 
+void close\+\_\+file (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{file}{}\end{DoxyParamCaption})}
+
+
+
+Ferme un fichier. 
+
+La fonction \doxylink{file_8c_a3cbcbb47b732f62618b9614903245343}{close\+\_\+file()} ferme le fichier spécifié. Si la fermeture échoue, elle affiche un message d\textquotesingle{}erreur et termine le programme.
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & Le pointeur vers le fichier à fermer. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{file_8c_a6e21c22368eb6dc29f3968a4f973d6fd}\index{file.c@{file.c}!open\_file@{open\_file}}
+\index{open\_file@{open\_file}!file.c@{file.c}}
+\doxysubsubsection{\texorpdfstring{open\_file()}{open\_file()}}
+{\footnotesize\ttfamily \label{file_8c_a6e21c22368eb6dc29f3968a4f973d6fd} 
+FILE \texorpdfstring{$\ast$}{*} open\+\_\+file (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{filename}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{mode}{}\end{DoxyParamCaption})}
+
+
+
+Ouvre un fichier en mode spécifié. 
+
+La fonction \doxylink{file_8c_a6e21c22368eb6dc29f3968a4f973d6fd}{open\+\_\+file()} tente d\textquotesingle{}ouvrir un fichier avec le nom et le mode spécifiés. Si l\textquotesingle{}ouverture échoue, elle affiche un message d\textquotesingle{}erreur et termine le programme.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Le nom du fichier à ouvrir. \\
+\hline
+{\em mode} & Le mode d\textquotesingle{}ouverture du fichier (ex\+: "{}r"{} pour lecture, "{}w"{} pour écriture, "{}a"{} pour ajout). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Un pointeur vers le fichier ouvert, ou NULL en cas d\textquotesingle{}échec. 
+\end{DoxyReturn}
+\Hypertarget{file_8c_aa76d36f1ed82ef1965f595e1369c4f2e}\index{file.c@{file.c}!read\_file@{read\_file}}
+\index{read\_file@{read\_file}!file.c@{file.c}}
+\doxysubsubsection{\texorpdfstring{read\_file()}{read\_file()}}
+{\footnotesize\ttfamily \label{file_8c_aa76d36f1ed82ef1965f595e1369c4f2e} 
+char \texorpdfstring{$\ast$}{*} read\+\_\+file (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{file}{}\end{DoxyParamCaption})}
+
+
+
+Lit le contenu d\textquotesingle{}un fichier dans un buffer. 
+
+La fonction \doxylink{file_8c_aa76d36f1ed82ef1965f595e1369c4f2e}{read\+\_\+file()} alloue un buffer de taille BUFSIZE et lit les données du fichier dans ce buffer. Si l\textquotesingle{}allocation de mémoire ou la lecture échoue, elle affiche un message d\textquotesingle{}erreur et termine le programme.
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & Le pointeur vers le fichier à lire. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Un pointeur vers le buffer contenant les données lues, ou NULL en cas d\textquotesingle{}échec. 
+\end{DoxyReturn}
+\Hypertarget{file_8c_a11aab094e6e51c332cd04a431a8d535d}\index{file.c@{file.c}!write\_file@{write\_file}}
+\index{write\_file@{write\_file}!file.c@{file.c}}
+\doxysubsubsection{\texorpdfstring{write\_file()}{write\_file()}}
+{\footnotesize\ttfamily \label{file_8c_a11aab094e6e51c332cd04a431a8d535d} 
+void write\+\_\+file (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{file}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{buffer}{}\end{DoxyParamCaption})}
+
+
+
+Écrit le contenu d\textquotesingle{}un buffer dans un fichier. 
+
+La fonction \doxylink{file_8c_a11aab094e6e51c332cd04a431a8d535d}{write\+\_\+file()} écrit les données du buffer dans le fichier spécifié. Si l\textquotesingle{}écriture échoue, elle affiche un message d\textquotesingle{}erreur et termine le programme.
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & Le pointeur vers le fichier où écrire. \\
+\hline
+{\em buffer} & Le buffer contenant les données à écrire. \\
+\hline
+\end{DoxyParams}

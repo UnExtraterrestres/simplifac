@@ -5,24 +5,22 @@ gcc -Wall -Wextra -std=c99 -o FILE FILE.c
 ```
 
 # compression simplifié
+- écrire un script qui génère une archive depuis DIR ou FILE, en prenant en compte un .ignore (s'il existe)
+
 Commandes déjà utilisées :
 ```sh
-tar -czvf nom_archive.tar.gz FICHIER...
+tar -czvf NOMARCHIVE.tar.gz FICHIER...
+tar --exclude-from=CHEMINVERS.ignore -czvf NOMARCHIVE.tar.gz DIR
 ```
-
 Décompression
 ```sh
-tar -zxvf nom_archive.tar.gz
+tar -zxvf NOMARCHIVE.tar.gz
 ```
 
 # make base
-Recensement des notions de bases
-- gestion de fichier
-- gestion de flux
-- gestion de processus
-- gestion des tubes
+- recenser les fonctions récurentes du cours
+- coder les fonctions recensées
+- écrire leur doc
 
-Ecriture des scripts
-- écrire une doc depuis le recensement
-- écrire les fonctions de la doc
-- coder le script qui automatise cette tâche
+- script de génération de la doc
+- script d'écriture des fonctions demandées

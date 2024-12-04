@@ -1,0 +1,171 @@
+\doxysection{sysfunc/tube.c File Reference}
+\hypertarget{tube_8c}{}\label{tube_8c}\index{sysfunc/tube.c@{sysfunc/tube.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$sys/wait.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{tube_8c_a8fb447618db946a9e2a596d9ea18763f}{\+\_\+\+DEFAULT\+\_\+\+SOURCE}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{tube_8c_a3e3f2963c4605138b8e7955fd615505c}{create\+\_\+pipe}} ()
+\begin{DoxyCompactList}\small\item\em Crée un pipe. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tube_8c_ad2dfe679bda577169538b0935ecaa668}{redirect\+\_\+stdin\+\_\+to\+\_\+pipeout}} (int pipefd)
+\begin{DoxyCompactList}\small\item\em Redirige l\textquotesingle{}entrée standard vers la sortie du pipe. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tube_8c_ae4d1e350d03679dda74f79eaf87f8736}{redirect\+\_\+stdout\+\_\+to\+\_\+pipein}} (int pipefd)
+\begin{DoxyCompactList}\small\item\em Redirige la sortie standard vers l\textquotesingle{}entrée du pipe. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tube_8c_af00d0b97e91b9b359358e8ffe442cb92}{redirect\+\_\+stderr\+\_\+to\+\_\+pipein}} (int pipefd)
+\begin{DoxyCompactList}\small\item\em Redirige la sortie d\textquotesingle{}erreur standard vers l\textquotesingle{}entrée du pipe. \end{DoxyCompactList}\item 
+ssize\+\_\+t \mbox{\hyperlink{tube_8c_aa4027f6dae408115234075d0d71c51c3}{read\+\_\+from\+\_\+pipe}} (int fd, void \texorpdfstring{$\ast$}{*}buf, size\+\_\+t count)
+\begin{DoxyCompactList}\small\item\em Lit des données à partir d\textquotesingle{}un pipe. \end{DoxyCompactList}\item 
+ssize\+\_\+t \mbox{\hyperlink{tube_8c_ab18926854729ea4908614fb8e7208063}{write\+\_\+to\+\_\+pipe}} (int fd, const void \texorpdfstring{$\ast$}{*}buf, size\+\_\+t count)
+\begin{DoxyCompactList}\small\item\em Écrit des données dans un pipe. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tube_8c_a2a50dffcbdcd6257fa6c7121c6e09862}{close\+\_\+pipe}} (int pipefd\mbox{[}2\mbox{]})
+\begin{DoxyCompactList}\small\item\em Ferme un pipe. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{tube_8c_a8fb447618db946a9e2a596d9ea18763f}\index{tube.c@{tube.c}!\_DEFAULT\_SOURCE@{\_DEFAULT\_SOURCE}}
+\index{\_DEFAULT\_SOURCE@{\_DEFAULT\_SOURCE}!tube.c@{tube.c}}
+\doxysubsubsection{\texorpdfstring{\_DEFAULT\_SOURCE}{\_DEFAULT\_SOURCE}}
+{\footnotesize\ttfamily \label{tube_8c_a8fb447618db946a9e2a596d9ea18763f} 
+\#define \+\_\+\+DEFAULT\+\_\+\+SOURCE}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{tube_8c_a2a50dffcbdcd6257fa6c7121c6e09862}\index{tube.c@{tube.c}!close\_pipe@{close\_pipe}}
+\index{close\_pipe@{close\_pipe}!tube.c@{tube.c}}
+\doxysubsubsection{\texorpdfstring{close\_pipe()}{close\_pipe()}}
+{\footnotesize\ttfamily \label{tube_8c_a2a50dffcbdcd6257fa6c7121c6e09862} 
+void close\+\_\+pipe (\begin{DoxyParamCaption}\item[{int}]{pipefd}{\mbox{[}2\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+Ferme un pipe. 
+
+La fonction \doxylink{tube_8c_a2a50dffcbdcd6257fa6c7121c6e09862}{close\+\_\+pipe()} ferme les deux extrémités d\textquotesingle{}un pipe en utilisant la fonction close(). Si la fermeture échoue, elle affiche un message d\textquotesingle{}erreur et termine le programme.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pipefd} & Un tableau de deux descripteurs de fichier représentant les deux extrémités du pipe. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{tube_8c_a3e3f2963c4605138b8e7955fd615505c}\index{tube.c@{tube.c}!create\_pipe@{create\_pipe}}
+\index{create\_pipe@{create\_pipe}!tube.c@{tube.c}}
+\doxysubsubsection{\texorpdfstring{create\_pipe()}{create\_pipe()}}
+{\footnotesize\ttfamily \label{tube_8c_a3e3f2963c4605138b8e7955fd615505c} 
+int create\+\_\+pipe (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Crée un pipe. 
+
+La fonction \doxylink{tube_8c_a3e3f2963c4605138b8e7955fd615505c}{create\+\_\+pipe()} crée un pipe en utilisant la fonction pipe(). Si la création du pipe échoue, elle affiche un message d\textquotesingle{}erreur et termine le programme.
+
+\begin{DoxyReturn}{Returns}
+0 si la création du pipe réussit, sinon termine le programme. 
+\end{DoxyReturn}
+\Hypertarget{tube_8c_aa4027f6dae408115234075d0d71c51c3}\index{tube.c@{tube.c}!read\_from\_pipe@{read\_from\_pipe}}
+\index{read\_from\_pipe@{read\_from\_pipe}!tube.c@{tube.c}}
+\doxysubsubsection{\texorpdfstring{read\_from\_pipe()}{read\_from\_pipe()}}
+{\footnotesize\ttfamily \label{tube_8c_aa4027f6dae408115234075d0d71c51c3} 
+ssize\+\_\+t read\+\_\+from\+\_\+pipe (\begin{DoxyParamCaption}\item[{int}]{fd}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{buf}{, }\item[{size\+\_\+t}]{count}{}\end{DoxyParamCaption})}
+
+
+
+Lit des données à partir d\textquotesingle{}un pipe. 
+
+La fonction \doxylink{tube_8c_aa4027f6dae408115234075d0d71c51c3}{read\+\_\+from\+\_\+pipe()} lit des données à partir d\textquotesingle{}un pipe en utilisant la fonction read(). Si la lecture échoue, elle affiche un message d\textquotesingle{}erreur et termine le programme.
+
+
+\begin{DoxyParams}{Parameters}
+{\em fd} & Le descripteur de fichier du pipe. \\
+\hline
+{\em buf} & Le buffer où stocker les données lues. \\
+\hline
+{\em count} & Le nombre d\textquotesingle{}octets à lire. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Le nombre d\textquotesingle{}octets lus, ou -\/1 en cas d\textquotesingle{}échec. 
+\end{DoxyReturn}
+\Hypertarget{tube_8c_af00d0b97e91b9b359358e8ffe442cb92}\index{tube.c@{tube.c}!redirect\_stderr\_to\_pipein@{redirect\_stderr\_to\_pipein}}
+\index{redirect\_stderr\_to\_pipein@{redirect\_stderr\_to\_pipein}!tube.c@{tube.c}}
+\doxysubsubsection{\texorpdfstring{redirect\_stderr\_to\_pipein()}{redirect\_stderr\_to\_pipein()}}
+{\footnotesize\ttfamily \label{tube_8c_af00d0b97e91b9b359358e8ffe442cb92} 
+void redirect\+\_\+stderr\+\_\+to\+\_\+pipein (\begin{DoxyParamCaption}\item[{int}]{pipefd}{}\end{DoxyParamCaption})}
+
+
+
+Redirige la sortie d\textquotesingle{}erreur standard vers l\textquotesingle{}entrée du pipe. 
+
+La fonction \doxylink{tube_8c_af00d0b97e91b9b359358e8ffe442cb92}{redirect\+\_\+stderr\+\_\+to\+\_\+pipein()} utilise dup2() pour rediriger la sortie d\textquotesingle{}erreur standard (STDERR\+\_\+\+FILENO) vers l\textquotesingle{}entrée du pipe (pipefd). Si la redirection échoue, elle affiche un message d\textquotesingle{}erreur et termine le programme.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pipefd} & Le descripteur de fichier du pipe. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{tube_8c_ad2dfe679bda577169538b0935ecaa668}\index{tube.c@{tube.c}!redirect\_stdin\_to\_pipeout@{redirect\_stdin\_to\_pipeout}}
+\index{redirect\_stdin\_to\_pipeout@{redirect\_stdin\_to\_pipeout}!tube.c@{tube.c}}
+\doxysubsubsection{\texorpdfstring{redirect\_stdin\_to\_pipeout()}{redirect\_stdin\_to\_pipeout()}}
+{\footnotesize\ttfamily \label{tube_8c_ad2dfe679bda577169538b0935ecaa668} 
+void redirect\+\_\+stdin\+\_\+to\+\_\+pipeout (\begin{DoxyParamCaption}\item[{int}]{pipefd}{}\end{DoxyParamCaption})}
+
+
+
+Redirige l\textquotesingle{}entrée standard vers la sortie du pipe. 
+
+La fonction \doxylink{tube_8c_ad2dfe679bda577169538b0935ecaa668}{redirect\+\_\+stdin\+\_\+to\+\_\+pipeout()} utilise dup2() pour rediriger l\textquotesingle{}entrée standard (STDIN\+\_\+\+FILENO) vers la sortie du pipe (pipefd). Si la redirection échoue, elle affiche un message d\textquotesingle{}erreur et termine le programme.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pipefd} & Le descripteur de fichier du pipe. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{tube_8c_ae4d1e350d03679dda74f79eaf87f8736}\index{tube.c@{tube.c}!redirect\_stdout\_to\_pipein@{redirect\_stdout\_to\_pipein}}
+\index{redirect\_stdout\_to\_pipein@{redirect\_stdout\_to\_pipein}!tube.c@{tube.c}}
+\doxysubsubsection{\texorpdfstring{redirect\_stdout\_to\_pipein()}{redirect\_stdout\_to\_pipein()}}
+{\footnotesize\ttfamily \label{tube_8c_ae4d1e350d03679dda74f79eaf87f8736} 
+void redirect\+\_\+stdout\+\_\+to\+\_\+pipein (\begin{DoxyParamCaption}\item[{int}]{pipefd}{}\end{DoxyParamCaption})}
+
+
+
+Redirige la sortie standard vers l\textquotesingle{}entrée du pipe. 
+
+La fonction \doxylink{tube_8c_ae4d1e350d03679dda74f79eaf87f8736}{redirect\+\_\+stdout\+\_\+to\+\_\+pipein()} utilise dup2() pour rediriger la sortie standard (STDOUT\+\_\+\+FILENO) vers l\textquotesingle{}entrée du pipe (pipefd). Si la redirection échoue, elle affiche un message d\textquotesingle{}erreur et termine le programme.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pipefd} & Le descripteur de fichier du pipe. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{tube_8c_ab18926854729ea4908614fb8e7208063}\index{tube.c@{tube.c}!write\_to\_pipe@{write\_to\_pipe}}
+\index{write\_to\_pipe@{write\_to\_pipe}!tube.c@{tube.c}}
+\doxysubsubsection{\texorpdfstring{write\_to\_pipe()}{write\_to\_pipe()}}
+{\footnotesize\ttfamily \label{tube_8c_ab18926854729ea4908614fb8e7208063} 
+ssize\+\_\+t write\+\_\+to\+\_\+pipe (\begin{DoxyParamCaption}\item[{int}]{fd}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{buf}{, }\item[{size\+\_\+t}]{count}{}\end{DoxyParamCaption})}
+
+
+
+Écrit des données dans un pipe. 
+
+La fonction \doxylink{tube_8c_ab18926854729ea4908614fb8e7208063}{write\+\_\+to\+\_\+pipe()} écrit des données dans un pipe en utilisant la fonction write(). Si l\textquotesingle{}écriture échoue, elle affiche un message d\textquotesingle{}erreur et termine le programme.
+
+
+\begin{DoxyParams}{Parameters}
+{\em fd} & Le descripteur de fichier du pipe. \\
+\hline
+{\em buf} & Le buffer contenant les données à écrire. \\
+\hline
+{\em count} & Le nombre d\textquotesingle{}octets à écrire. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Le nombre d\textquotesingle{}octets écrits, ou -\/1 en cas d\textquotesingle{}échec. 
+\end{DoxyReturn}

@@ -1,0 +1,98 @@
+\doxysection{sysfunc/dir.c File Reference}
+\hypertarget{dir_8c}{}\label{dir_8c}\index{sysfunc/dir.c@{sysfunc/dir.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$dirent.\+h$>$}\newline
+{\ttfamily \#include $<$errno.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+DIR \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{dir_8c_afa9049db9e8d511d0a68b4a010ff7d5c}{open\+\_\+directory}} (const char \texorpdfstring{$\ast$}{*}dirname)
+\begin{DoxyCompactList}\small\item\em Ouvre un répertoire. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{dir_8c_ab43c2ae44dcec56105a8613179aaa09e}{close\+\_\+directory}} (DIR \texorpdfstring{$\ast$}{*}dir)
+\begin{DoxyCompactList}\small\item\em Ferme un répertoire. \end{DoxyCompactList}\item 
+char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{dir_8c_a3d36703d62f31a45ab32c21b9fd7dd1c}{read\+\_\+directory}} (DIR \texorpdfstring{$\ast$}{*}dir, int \texorpdfstring{$\ast$}{*}count)
+\begin{DoxyCompactList}\small\item\em Lit les entrées d\textquotesingle{}un répertoire. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{dir_8c_affa4ca25535bb21bb8f56ca41b25ef9d}{free\+\_\+entries}} (char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}entries, int count)
+\begin{DoxyCompactList}\small\item\em Libère la mémoire allouée pour les entrées d\textquotesingle{}un répertoire. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{dir_8c_ab43c2ae44dcec56105a8613179aaa09e}\index{dir.c@{dir.c}!close\_directory@{close\_directory}}
+\index{close\_directory@{close\_directory}!dir.c@{dir.c}}
+\doxysubsubsection{\texorpdfstring{close\_directory()}{close\_directory()}}
+{\footnotesize\ttfamily \label{dir_8c_ab43c2ae44dcec56105a8613179aaa09e} 
+void close\+\_\+directory (\begin{DoxyParamCaption}\item[{DIR \texorpdfstring{$\ast$}{*}}]{dir}{}\end{DoxyParamCaption})}
+
+
+
+Ferme un répertoire. 
+
+La fonction \doxylink{dir_8c_ab43c2ae44dcec56105a8613179aaa09e}{close\+\_\+directory()} ferme un répertoire ouvert en utilisant la fonction closedir(). Si la fermeture échoue, elle affiche un message d\textquotesingle{}erreur et termine le programme.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dir} & Le pointeur vers le répertoire à fermer. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{dir_8c_affa4ca25535bb21bb8f56ca41b25ef9d}\index{dir.c@{dir.c}!free\_entries@{free\_entries}}
+\index{free\_entries@{free\_entries}!dir.c@{dir.c}}
+\doxysubsubsection{\texorpdfstring{free\_entries()}{free\_entries()}}
+{\footnotesize\ttfamily \label{dir_8c_affa4ca25535bb21bb8f56ca41b25ef9d} 
+void free\+\_\+entries (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{entries}{, }\item[{int}]{count}{}\end{DoxyParamCaption})}
+
+
+
+Libère la mémoire allouée pour les entrées d\textquotesingle{}un répertoire. 
+
+La fonction \doxylink{dir_8c_affa4ca25535bb21bb8f56ca41b25ef9d}{free\+\_\+entries()} libère la mémoire allouée pour les entrées d\textquotesingle{}un répertoire. Elle parcourt le tableau d\textquotesingle{}entrées et libère chaque chaîne de caractères, puis libère le tableau lui-\/même.
+
+
+\begin{DoxyParams}{Parameters}
+{\em entries} & Le tableau de chaînes de caractères contenant les noms des entrées du répertoire. \\
+\hline
+{\em count} & Le nombre d\textquotesingle{}entrées dans le tableau. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{dir_8c_afa9049db9e8d511d0a68b4a010ff7d5c}\index{dir.c@{dir.c}!open\_directory@{open\_directory}}
+\index{open\_directory@{open\_directory}!dir.c@{dir.c}}
+\doxysubsubsection{\texorpdfstring{open\_directory()}{open\_directory()}}
+{\footnotesize\ttfamily \label{dir_8c_afa9049db9e8d511d0a68b4a010ff7d5c} 
+DIR \texorpdfstring{$\ast$}{*} open\+\_\+directory (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{dirname}{}\end{DoxyParamCaption})}
+
+
+
+Ouvre un répertoire. 
+
+La fonction \doxylink{dir_8c_afa9049db9e8d511d0a68b4a010ff7d5c}{open\+\_\+directory()} ouvre un répertoire spécifié par son nom en utilisant la fonction opendir(). Si l\textquotesingle{}ouverture échoue, elle affiche un message d\textquotesingle{}erreur et termine le programme.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dirname} & Le nom du répertoire à ouvrir. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Un pointeur vers le répertoire ouvert (DIR\texorpdfstring{$\ast$}{*}), ou NULL en cas d\textquotesingle{}échec. 
+\end{DoxyReturn}
+\Hypertarget{dir_8c_a3d36703d62f31a45ab32c21b9fd7dd1c}\index{dir.c@{dir.c}!read\_directory@{read\_directory}}
+\index{read\_directory@{read\_directory}!dir.c@{dir.c}}
+\doxysubsubsection{\texorpdfstring{read\_directory()}{read\_directory()}}
+{\footnotesize\ttfamily \label{dir_8c_a3d36703d62f31a45ab32c21b9fd7dd1c} 
+char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} read\+\_\+directory (\begin{DoxyParamCaption}\item[{DIR \texorpdfstring{$\ast$}{*}}]{dir}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{count}{}\end{DoxyParamCaption})}
+
+
+
+Lit les entrées d\textquotesingle{}un répertoire. 
+
+La fonction \doxylink{dir_8c_a3d36703d62f31a45ab32c21b9fd7dd1c}{read\+\_\+directory()} lit toutes les entrées d\textquotesingle{}un répertoire ouvert et les stocke dans un tableau de chaînes de caractères. Elle utilise readdir() pour lire chaque entrée du répertoire et strdup() pour dupliquer les noms des entrées. Si une allocation de mémoire échoue, elle affiche un message d\textquotesingle{}erreur et termine le programme.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dir} & Le pointeur vers le répertoire ouvert. \\
+\hline
+{\em count} & Un pointeur vers un entier où sera stocké le nombre d\textquotesingle{}entrées lues. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Un tableau de chaînes de caractères contenant les noms des entrées du répertoire, ou NULL en cas d\textquotesingle{}échec. 
+\end{DoxyReturn}
