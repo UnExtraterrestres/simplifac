@@ -1,21 +1,11 @@
 #!/bin/bash
 
-if test -z "$1"; then
-    echo "Usage: $0 DIR_PATH"
-    exit 1
-fi
-
-# Chemin du dossier à partir duquel générer la documentation
-DOC_DIR="$1"
+DOC_DIR=""
+OUTPUT_DIRECTORY="doc/"
 
 # Nom du projet
-PROJECT_NAME="Mon Projet"
-
-# Version du projet
+PROJECT_NAME="Simplifac Documentation"
 PROJECT_NUMBER="1.0"
-
-# Répertoire de sortie pour la documentation
-OUTPUT_DIRECTORY="$DOC_DIR/doc"
 
 doxygen -g
 
@@ -28,11 +18,11 @@ cat <<EOF > Doxyfile
 DOXYFILE_ENCODING      = UTF-8
 PROJECT_NAME           = "$PROJECT_NAME"
 PROJECT_NUMBER         = "$PROJECT_NUMBER"
-PROJECT_BRIEF          = "Description brève de mon projet"
+PROJECT_BRIEF          = ""
 PROJECT_LOGO           =
 OUTPUT_DIRECTORY       = $OUTPUT_DIRECTORY
 CREATE_SUBDIRS         = NO
-OUTPUT_LANGUAGE        = English
+OUTPUT_LANGUAGE        = French
 BRIEF_MEMBER_DESC      = YES
 REPEAT_BRIEF           = YES
 ABBREVIATE_BRIEF       = "The $name class" \
@@ -245,11 +235,4 @@ EOF
 
 doxygen Doxyfile
 
-cd "$OUTPUT_DIRECTORY/latex"
-
-pdflatex refman.tex
-makeindex refman.tex
-pdflatex refman.tex
-pdflatex refman.tex
-
-echo "Compilation terminée. Le fichier PDF a été généré dans $OUTPUT_DIRECTORY/latex/refman.pdf"
+zip -r archidoc.zip "$OUTPUT_DIRECTORY"
