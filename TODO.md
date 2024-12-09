@@ -1,10 +1,10 @@
-# compilation simplifié
+# écrire la commande de compilation simplifié
 La compilation C demandé :
 ```sh
 gcc -Wall -Wextra -std=c99 -o FILE FILE.c
 ```
 
-# compression simplifié
+# écrire la commande de compression simplifié
 - écrire un script qui génère une archive depuis DIR ou FILE, en prenant en compte un .ignore (s'il existe)
 
 Commandes déjà utilisées :
@@ -17,10 +17,6 @@ Décompression
 tar -zxvf NOMARCHIVE.tar.gz
 ```
 
-# make base
-- recenser les fonctions récurentes du cours
-- coder les fonctions recensées
-- écrire leur doc
+# écrire la commande principale : simplifac
 
-- script de génération de la doc
-- script d'écriture des fonctions demandées
+voir : simpliTODO.md
