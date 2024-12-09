@@ -1,3 +1,6 @@
+# results
+*.result/
+
 # doc and archives
 doc/
 *.zip

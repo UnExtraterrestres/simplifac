@@ -17,6 +17,8 @@ cmd_help()
     echo "OPTIONS"
     echo "   --help                 show help and exit"
     echo " "
+    echo "For more code information, please : RTFM."
+    echo " "
 
     exit 0
 }
@@ -92,7 +94,40 @@ get_needsNdFunctions()
 
 write_needs()
 {
-    if 
+    if test $# -ne 1; then
+        error_message "write_needs invalid number of arguments."
+    fi
+
+    grep -E '^#define' "$1" >> "$OUTFILE"
+    grep -E '^#include' "$1" >> "$OUTFILE"
+}
+
+write_functions()
+{
+    if test $# -ne 1; then
+        error_message "write_functions invalid number of arguments."
+    fi
+
+    cat "$1" >> "$OUTFILE"
+    echo " " >> "$OUTFILE"
+
+    cat << EOF >> "$OUTFILE"
+int main(int argc, char **argv)
+{
+
+    return 0;
+}
+EOF
+}
+
+write_needsNdFunctions()
+{
+    if test 1 -ge $#; then
+        error_message "write_needsNdFunctions invalid number of arguments."
+    fi
+
+    write_needs "$1"
+    write_functions "$2"
 }
 
 merge_needsNdFunctions()
@@ -101,7 +136,7 @@ merge_needsNdFunctions()
     ALLFUNCTIONS="$RES_PATH/functions"
 
     get_needsNdFunctions "$ALLNEEDS" "$ALLFUNCTIONS" $@
-    write_needs "$ALLNEEDS" "$OUTFILE"
+    write_needsNdFunctions "$ALLNEEDS" "$ALLFUNCTIONS"
 }
 
 if test $1 == '--help'; then
@@ -121,8 +156,7 @@ if ! test "${1##*.}" = "c"; then
 else
     OUTFILE="$RES_PATH/$1"
 fi
-
-shift # retire l'argument de $@
+shift
 
 echo "$SIGNATURE" > "$OUTFILE"
 
