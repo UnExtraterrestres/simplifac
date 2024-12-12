@@ -21,3 +21,5 @@ touch: impossible de faire un touch '../coursL2/sys/TP10/seq_pi.result/../coursL
 Error : touch '../coursL2/sys/TP10/seq_pi.result/../coursL2/sys/TP10/seq_pi.c' failed
 For more information, please use : ./simplifac.sh --help
 ```
+
+# migration sous C
