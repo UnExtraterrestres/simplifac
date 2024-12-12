@@ -12,5 +12,4 @@ tar -zxvf NOMARCHIVE.tar.gz
 ```
 
 # migration sous C
-- recoder les fonctionnalitées, en C, pour en sortir un exécutable
-=> fixer les bugs
+- voir si une migration sous C change quelque chose
