@@ -10,3 +10,14 @@ Décompression
 ```sh
 tar -zxvf NOMARCHIVE.tar.gz
 ```
+
+# BUGFIX
+=> dans la génération du chemin de resultats
+Exemple : 
+```sh
+[user]$ ./simplifac.sh ../coursL2/sys/TP10/seq_pi process tube
+
+touch: impossible de faire un touch '../coursL2/sys/TP10/seq_pi.result/../coursL2/sys/TP10/seq_pi.c': Aucun fichier ou dossier de ce nom
+Error : touch '../coursL2/sys/TP10/seq_pi.result/../coursL2/sys/TP10/seq_pi.c' failed
+For more information, please use : ./simplifac.sh --help
+```

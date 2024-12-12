@@ -158,6 +158,13 @@ else
 fi
 shift
 
+if ! test -e "$OUTFILE"; then
+    touch "$OUTFILE"
+fi
+if test $? -ne 0; then
+    error_message "touch '$OUTFILE' failed"
+fi
+
 echo "$SIGNATURE" > "$OUTFILE"
 
 merge_needsNdFunctions $@
