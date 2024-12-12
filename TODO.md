@@ -17,5 +17,6 @@ tar -zxvf NOMARCHIVE.tar.gz
 # sysfunc
 - execvp, exec* ...
 - ouverture de fichier en descripteur
+- exemples de scripts : utilisation d'un processus fils, tube, fichier, ...
 
 # ajout fichier de compression simplifié dans le dossier resultat
