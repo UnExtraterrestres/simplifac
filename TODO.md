@@ -11,19 +11,6 @@ Décompression
 tar -zxvf NOMARCHIVE.tar.gz
 ```
 
-# BUGFIX
-=> dans la génération du chemin de resultats
-Exemple :
-```sh
-[user]$ ./simplifac.sh ../coursL2/sys/TP10/seq_pi process tube
-
-touch: impossible de faire un touch '../coursL2/sys/TP10/seq_pi.result/../coursL2/sys/TP10/seq_pi.c': Aucun fichier ou dossier de ce nom
-Error : touch '../coursL2/sys/TP10/seq_pi.result/../coursL2/sys/TP10/seq_pi.c' failed
-For more information, please use : ./simplifac.sh --help
-```
-
 # migration sous C
 - recoder les fonctionnalitées, en C, pour en sortir un exécutable
 => fixer les bugs
-
-# retirer l'écriture des commentaires dans le fichier de sortie

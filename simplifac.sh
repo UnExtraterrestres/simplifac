@@ -69,7 +69,7 @@ get_functions()
         error_message "get_function file $file does not exist."
     fi
 
-    grep -E -v '^#(define|include)|^$' "$file"
+    grep -E -v '^#(define|include)|^$|^\s*//|^\s*/\*|\*/\s*$|^\s*\*' "$file"
 }
 
 get_needsNdFunctions()
@@ -146,15 +146,18 @@ if test 1 -ge $#; then
     error_message "Invalid number of arguments."
 fi
 
+directory_path=$(dirname "$1")
+file_name=$(basename "$1")
+
 RES_PATH="$1.result"
 if ! test -e "$RES_PATH"; then
     mkdir "$RES_PATH"
 fi
 
 if ! test "${1##*.}" = "c"; then
-    OUTFILE="$RES_PATH/$1.c"
+    OUTFILE="$RES_PATH/$file_name.c"
 else
-    OUTFILE="$RES_PATH/$1"
+    OUTFILE="$RES_PATH/$file_name"
 fi
 shift
 
