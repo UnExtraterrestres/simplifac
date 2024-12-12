@@ -172,4 +172,11 @@ echo "$SIGNATURE" > "$OUTFILE"
 
 merge_needsNdFunctions $@
 
+cp "compilC.sh" "$RES_PATH"
+if test $? -ne 0; then
+    error_message "echec to copy auto compiler."
+fi
+
+rm "$RES_PATH/needs" "$RES_PATH/functions"
+
 exit 0

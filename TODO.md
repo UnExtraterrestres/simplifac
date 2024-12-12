@@ -13,3 +13,9 @@ tar -zxvf NOMARCHIVE.tar.gz
 
 # migration sous C
 - voir si une migration sous C change quelque chose
+
+# sysfunc
+- execvp, exec* ...
+- ouverture de fichier en descripteur
+
+# ajout fichier de compression simplifié dans le dossier resultat
