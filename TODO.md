@@ -13,7 +13,7 @@ tar -zxvf NOMARCHIVE.tar.gz
 
 # BUGFIX
 => dans la génération du chemin de resultats
-Exemple : 
+Exemple :
 ```sh
 [user]$ ./simplifac.sh ../coursL2/sys/TP10/seq_pi process tube
 
@@ -23,3 +23,7 @@ For more information, please use : ./simplifac.sh --help
 ```
 
 # migration sous C
+- recoder les fonctionnalitées, en C, pour en sortir un exécutable
+=> fixer les bugs
+
+# retirer l'écriture des commentaires dans le fichier de sortie
