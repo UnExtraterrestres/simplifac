@@ -8,7 +8,8 @@ tar --exclude-from=CHEMINVERS.ignore -czvf NOMARCHIVE.tar.gz DIR
 ```
 Décompression
 ```sh
-tar -zxvf NOMARCHIVE.tar.gz
+unzip nom_du_fichier.zip
+tar -xzvf nom_du_fichier.tar.gz
 ```
 
 # migration sous C
