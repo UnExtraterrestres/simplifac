@@ -10,19 +10,17 @@
  *
  * La fonction create_pipe() crée un pipe en utilisant la fonction pipe().
  * Si la création du pipe échoue, elle affiche un message d'erreur et termine le programme.
- *
+ * 
+ * \param pipefd les descripteurs de fichier du pipe
  * \return 0 si la création du pipe réussit, sinon termine le programme.
  */
-int create_pipe()
+int create_pipe(int pipefd[2])
 {
-    int pipefd[2];
-
     if (pipe(pipefd) == -1)
     {
         perror("pipe");
         exit(EXIT_FAILURE);
     }
-
     return 0;
 }
 
@@ -129,6 +127,40 @@ ssize_t write_to_pipe(int fd, const void *buf, size_t count)
     }
 
     return n;
+}
+
+/**
+ * \brief Ferme l'extrémité de lecture d'un pipe.
+ *
+ * La fonction close_reading_tip() ferme l'extrémité de lecture d'un pipe en utilisant la fonction close().
+ * Si la fermeture échoue, elle affiche un message d'erreur et termine le programme.
+ *
+ * \param pipefd Un tableau de deux descripteurs de fichier représentant les deux extrémités du pipe.
+ */
+void close_reading_tip(int pipefd[2])
+{
+    if (close(pipefd[0]) == -1)
+    {
+        perror("close");
+        exit(EXIT_FAILURE);
+    }
+}
+
+/**
+ * \brief Ferme l'extrémité d'écriture d'un pipe.
+ *
+ * La fonction close_writting_tip() ferme l'extrémité d'écriture d'un pipe en utilisant la fonction close().
+ * Si la fermeture échoue, elle affiche un message d'erreur et termine le programme.
+ *
+ * \param pipefd Un tableau de deux descripteurs de fichier représentant les deux extrémités du pipe.
+ */
+void close_writting_tip(int pipefd[2])
+{
+    if (close(pipefd[1]) == -1)
+    {
+        perror("close");
+        exit(EXIT_FAILURE);
+    }
 }
 
 /**

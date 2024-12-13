@@ -96,3 +96,24 @@ void close_file(FILE *file)
         exit(EXIT_FAILURE);
     }
 }
+
+/**
+ * \brief Fonction exemple complet d'utilisation des fonctions, pour gestion de fichier
+ */
+int file_exemple()
+{
+    const char *filename = "example.txt";
+    FILE *file = open_file(filename, "w+");
+
+    const char *message = "Hello, World!";
+    write_file(file, message);
+
+    rewind(file); // Rembobine le fichier pour lire depuis le début
+    char *buffer = read_file(file);
+    printf("Read from file: %s\n", buffer);
+
+    free(buffer);
+    close_file(file);
+
+    return 0;
+}
