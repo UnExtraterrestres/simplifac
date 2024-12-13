@@ -209,7 +209,8 @@ int child_process_exemple()
 
 int child_process_example_with_redirections()
 {
-    int pipefd[2];
+
+    int pipefd[2]; // penser à spécifier l'option 'pipe'
     create_pipe(pipefd);
 
     pid_t child_pid = create_child_process();
