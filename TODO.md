@@ -19,15 +19,3 @@ tar -zxvf NOMARCHIVE.tar.gz
 # merge des needs et functions
 - vérifier les doublons needs
 - vérifier les doublons functions
-
-# Fichier compilation
-- ajouter une option, pour ajouter le nom du fichier par defaut à la compilation
-Par exemple :
-```
-./simplifac.sh -d myprogram process pipe
-```
-Va permettre de directement pouvoir lancer :
-```
-./compilC.sh
-```
-(Celui se trouvant dans le dossier myprogram.result)
