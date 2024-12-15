@@ -4,6 +4,7 @@
 #include <sys/wait.h>
 #include <sys/types.h>
 #include <fcntl.h>
+#include <string.h>
 
 /**
  * \brief Crée un processus enfant en utilisant la fonction fork().
@@ -210,7 +211,7 @@ int child_process_exemple()
 int child_process_example_with_redirections()
 {
 
-    int pipefd[2]; // penser à spécifier l'option 'pipe'
+    int pipefd[2];
     create_pipe(pipefd);
 
     pid_t child_pid = create_child_process();
@@ -220,8 +221,8 @@ int child_process_example_with_redirections()
         
         close_writting_tip(pipefd);
 
-        int fd1 = open_file("FILE1", 0644);
-        int fd2 = open_file("FILE2", 0644);
+        int fd1 = open_file_descriptor("FILE1", 0644);
+        int fd2 = open_file_descriptor("FILE2", 0644);
 
         redirect_stdin(pipefd[0]);
         redirect_stdout(fd1);
@@ -230,8 +231,8 @@ int child_process_example_with_redirections()
         int value = 42;
         execute_in_child(child_function, &value);
 
-        close_file(fd1);
-        close_file(fd2);
+        close_file_descriptor(fd1);
+        close_file_descriptor(fd2);
         exit(EXIT_SUCCESS);
     }
 

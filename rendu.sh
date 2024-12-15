@@ -23,7 +23,7 @@ check_file_type()
 
     # return 0 if .zip
     # return 1 if .tar.gz
-    # TODO : à revoir
+    # TODO : revoir la fonction
 
     if ! test -e "$1" || ! test -f "$1"; then
         error_message "unarchive '$1' must exist and be a file."

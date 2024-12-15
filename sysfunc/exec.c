@@ -92,22 +92,3 @@ void exec_execvp(const char *file, char *const argv[])
         exit(EXIT_FAILURE);
     }
 }
-
-/**
- * \brief Exécute un programme en utilisant execvpe.
- *
- * La fonction exec_execvpe() utilise execvpe pour exécuter un programme spécifié par file avec les arguments donnés dans un tableau et un environnement personnalisé.
- * Si l'exécution échoue, elle affiche un message d'erreur et termine le programme.
- *
- * \param file Le nom du programme à exécuter.
- * \param argv Le tableau des arguments.
- * \param envp L'environnement personnalisé.
- */
-void exec_execvpe(const char *file, char *const argv[], char *const envp[])
-{
-    if (execvpe(file, argv, envp) == -1)
-    {
-        perror("execvpe");
-        exit(EXIT_FAILURE);
-    }
-}
