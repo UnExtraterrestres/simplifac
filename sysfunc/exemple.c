@@ -84,3 +84,77 @@ int child_process_example_with_redirections()
 
     return 0;
 }
+
+int read_and_print_file() {
+    // Ouvrir un fichier en mode lecture
+    FILE *file = open_file("example.txt", "r");
+
+    // Lire le contenu du fichier dans un buffer
+    char *buffer = read_file(file);
+
+    // Afficher le contenu du buffer
+    printf("Contenu du fichier :\n%s\n", buffer);
+
+    // Fermer le fichier
+    close_file(file);
+
+    // Libérer la mémoire allouée pour le buffer
+    free(buffer);
+
+    return 0;
+}
+
+int writting_in_file() {
+    // Ouvrir un fichier en mode écriture
+    FILE *file = open_file("output.txt", "w");
+
+    // Texte à écrire dans le fichier
+    const char *text = "Bonjour, ceci est un exemple d'écriture dans un fichier.";
+
+    // Écrire le texte dans le fichier
+    write_file(file, text);
+
+    // Fermer le fichier
+    close_file(file);
+
+    return 0;
+}
+
+int copy_file_to_other() {
+    // Ouvrir le fichier source en mode lecture
+    FILE *source_file = open_file("source.txt", "r");
+
+    // Ouvrir le fichier de destination en mode écriture
+    FILE *dest_file = open_file("destination.txt", "w");
+
+    // Lire le contenu du fichier source dans un buffer
+    char *buffer = read_file(source_file);
+
+    // Écrire le contenu du buffer dans le fichier de destination
+    write_file(dest_file, buffer);
+
+    // Fermer les fichiers
+    close_file(source_file);
+    close_file(dest_file);
+
+    // Libérer la mémoire allouée pour le buffer
+    free(buffer);
+
+    return 0;
+}
+
+int add_text_to_file() {
+    // Ouvrir un fichier en mode ajout
+    FILE *file = open_file("append.txt", "a");
+
+    // Texte à ajouter au fichier
+    const char *text = "\nCeci est une ligne ajoutée au fichier.";
+
+    // Écrire le texte dans le fichier
+    write_file(file, text);
+
+    // Fermer le fichier
+    close_file(file);
+
+    return 0;
+}
