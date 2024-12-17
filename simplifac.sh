@@ -4,7 +4,9 @@ USAGE="Usage : ./$0 OUTPUT_FILE_NAME FUNCTIONS[...]"
 HELPER="For more information, please use : $0 --help"
 
 WEBINFOS="https://github.com/UnExtraterrestres/simplifac"
-SIGNATURE="// Fichier généré par simplifac. Plus d'informations : $WEBINFOS"
+SIG="// Fichier généré par simplifac. Plus d'informations : $WEBINFOS"
+
+SIGNATURE=""
 
 cmd_help()
 {

@@ -7,6 +7,28 @@
 #define BUFSIZE 64
 
 /**
+ * \struct FileData
+ * \brief Structure pour stocker les données lues d'un fichier.
+ *
+ * Cette structure contient un pointeur vers un buffer de caractères et la taille des données lues.
+ * Elle est utilisée pour encapsuler les données lues d'un fichier et leur taille.
+ *
+ * \var FileData::buffer
+ * \brief Pointeur vers le buffer contenant les données lues.
+ *
+ * Ce pointeur doit être alloué dynamiquement et libéré après utilisation pour éviter les fuites de mémoire.
+ *
+ * \var FileData::size
+ * \brief Taille des données lues dans le buffer.
+ *
+ * Cette variable indique le nombre d'octets lus dans le fichier et stockés dans le buffer.
+ */
+typedef struct {
+    char *buffer;
+    size_t size;
+} FileData;
+
+/**
  * \brief Ouvre un fichier en mode spécifié.
  *
  * La fonction open_file() tente d'ouvrir un fichier avec le nom et le mode spécifiés.
@@ -36,28 +58,26 @@ FILE* open_file(const char *filename, const char *mode)
  * Si l'allocation de mémoire ou la lecture échoue, elle affiche un message d'erreur et termine le programme.
  *
  * \param file Le pointeur vers le fichier à lire.
- * \return Un pointeur vers le buffer contenant les données lues, ou NULL en cas d'échec.
+ * \return Une structure FileData contenant un pointeur vers le buffer avec les données lues et la taille des données lues.
+ *         En cas d'échec, le programme se termine avec un code d'erreur.
  */
-char* read_file(FILE *file)
+FileData read_file(FILE *file)
 {
-    char *buffer = (char *)malloc(BUFSIZE * sizeof(char));
-
-    if (buffer == NULL)
+    FileData data;
+    data.buffer = (char *)malloc(BUFSIZE * sizeof(char));
+    if (data.buffer == NULL)
     {
         perror("malloc buffer");
         exit(EXIT_FAILURE);
     }
-
-    size_t sz = fread(buffer, sizeof(char), BUFSIZE, file);
-
-    if (sz == 0 && ferror(file))
+    data.size = fread(data.buffer, sizeof(char), BUFSIZE, file);
+    if (data.size == 0 && ferror(file))
     {
         perror("fread");
-        free(buffer);
+        free(data.buffer);
         exit(EXIT_FAILURE);
     }
-
-    return buffer;
+    return data;
 }
 
 /**
